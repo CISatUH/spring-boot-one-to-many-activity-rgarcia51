@@ -3,7 +3,7 @@ package main;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ADDRESS", schema = "PUBLIC", catalog = "TARGET")
+@Table(name = "ADDRESS", schema = "PUBLIC")
 public class AddressEntity {
     private int addressId;
     private String streetName;
@@ -13,7 +13,7 @@ public class AddressEntity {
     CustomerEntity customerEntity;
 
     @ManyToOne()
-    @JoinColumn(name = "CUSTOMER_ID")
+    @JoinColumn(name = "customer_id")
     public CustomerEntity getCustomerEntity() {
         return customerEntity;
     }

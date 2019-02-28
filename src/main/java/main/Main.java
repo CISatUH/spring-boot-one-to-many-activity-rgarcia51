@@ -22,7 +22,7 @@ public class Main implements CommandLineRunner {
     }
     @Override
     public void run(String... args) throws Exception {
-        customerEntityRepository.deleteAll();
+
         addData();
         for (CustomerEntity customerEntity: customerEntityRepository.findAll()){
             System.out.print(customerEntity);

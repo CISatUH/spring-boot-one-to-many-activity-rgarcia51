@@ -4,11 +4,12 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "CUSTOMER", schema = "PUBLIC", catalog = "TARGET")
+@Table(name = "CUSTOMER", schema = "PUBLIC")
 public class CustomerEntity {
     private int customerId;
     private String lastName;
     private String firstName;
+    private Set<AddressEntity> addresses;
 
     public CustomerEntity() {
     }
@@ -18,7 +19,7 @@ public class CustomerEntity {
         this.firstName = firstName;
     }
 
-    private Set<AddressEntity> addresses;
+
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "customerEntity", cascade = CascadeType.ALL)
     public Set<AddressEntity> getAddresses() {
@@ -31,7 +32,7 @@ public class CustomerEntity {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CUSTOMER_ID")
+    @Column(name = "CUSTOMER_ID", nullable = false)
     public int getCustomerId() {
         return customerId;
     }
@@ -51,7 +52,7 @@ public class CustomerEntity {
     }
 
     @Basic
-    @Column(name = "FIRST_NAME")
+    @Column(name = "FIRST_NAME", nullable = false, length = 20)
     public String getFirstName() {
         return firstName;
     }
